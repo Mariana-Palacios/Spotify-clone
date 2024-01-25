@@ -1,27 +1,55 @@
-# Spotify
+## Author
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+- [@Mariana-Palacios](https://www.github.com/Mariana-Palacios)
 
-## Development server
+## Prerequisites to Run the Application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Runtimes and Engines
 
-## Code scaffolding
+- npm: 10.1.0
+- Angular CLI: ^17.1.0
+- TypeScript: ~5.3.2
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Tools and Dependencies
 
-## Build
+- IDE or Code Editor (Visual Studio Code)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instructions to Run the Application
 
-## Running unit tests
+Run the following command
+###  Frontend 🌐
+```bash
+  ng serve
+  
+```
+# Commits
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Versiones
 
-## Running end-to-end tests
+| Historia de Usuario | Versión |
+|---------------------|---------|
+| History User 1             | HU1     |
+| History User 2             | HU2    |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Razones del commit
 
-## Further help
+| Estado | Tipo     |
+|------------|----------|
+| Terminado    | ✔️ |
+| En Proceso    | 💬  |
+| Ajuste    | ⚙️  |
+| Bug    | 🐞  |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Registro de Cambios
+
+| Versión | Tipo     | Descripción del Cambio               |
+|---------------------|----------|--------------------------------------|
+| HU1                 | ✔️      | Adjusted CSS styles on the home page |
+
+
+Example 
+
+```bash
+feat: [HU1] ✔️ Adjusted CSS styles on the home page
+```
