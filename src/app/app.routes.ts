@@ -5,7 +5,11 @@ export const routes: Routes = [
         path:'spotify',
         loadComponent: ()=> import('./spotify/spotify.component'),
         children:[
-
+            {
+                path:'artist/:name',
+                title: 'artist view',
+                loadComponent: () => import('@components/artist/artist.component')
+            }
         ]
     },
     {

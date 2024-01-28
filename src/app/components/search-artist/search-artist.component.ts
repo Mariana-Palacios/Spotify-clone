@@ -7,14 +7,14 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { artist, spotifyToken } from './__mock__/search-artist';
-import { Artist, Items, SpotifyApiToken } from '@interfaces/spotifyApi';
-
+import { Items } from '@interfaces/spotifyApi';
+import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-search-artist',
   standalone: true,
   imports: [
   CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, 
-    MatSortModule, MatPaginatorModule
+    MatSortModule, MatPaginatorModule, MatIconModule
   ],
   templateUrl: './search-artist.component.html',
   styleUrl: './search-artist.component.css',
@@ -22,7 +22,7 @@ import { Artist, Items, SpotifyApiToken } from '@interfaces/spotifyApi';
 })
 export class SearchArtistComponent {     
 
-  displayedColumns: string[] = ['id','img','name'];
+  displayedColumns: string[] = ['id'];
   dataSource: MatTableDataSource<Items>;
 
   public isSearching:boolean = false
@@ -34,7 +34,6 @@ export class SearchArtistComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   public spotifyService = inject(SpotifyApiService)
-  users = signal(artist)
 
   constructor() {
     this.spotifyService.getToken().subscribe(
@@ -47,23 +46,20 @@ export class SearchArtistComponent {
         console.error('Error:', error);
       }
     )
-
   }
 
   applyFilter(event: Event) {
     this.filterValue = (event.target as HTMLInputElement).value;
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
 
   setDataSource(){
-    this.dataSource = new MatTableDataSource(this.prueba.artists.items /*this.users().artists.items*/);
+    this.dataSource = new MatTableDataSource(this.prueba.artists.items );
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   toggleSearching(){
     this.isSearching = true 
@@ -72,12 +68,12 @@ export class SearchArtistComponent {
         (data) => {
           this.isSearching = false
           this.prueba = data
+          console.log(this.prueba)
           this.setDataSource()
-          this.users.set(data)
-          console.log(this.users())
         },
         (error)=>{
           this.isSearching = false
+          console.log(error)
         }
       )
     }

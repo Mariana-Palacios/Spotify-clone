@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Artist, SpotifyApiToken } from '@interfaces/spotifyApi';
+import { SpotifyApiToken } from '@interfaces/spotifyApi';
 import { Subject } from 'rxjs';
 import { ENV } from '@constants/env';
 
@@ -42,44 +42,23 @@ export class SpotifyApiService {
     return this.spotifyToken.asObservable();
   }
 
-  /** @return  the playlist from spotify*/
-  getPlaylist( token: string ): Observable<any> {
-    const artistUrl = `${ENV.spotifyApiUrl}/playlists/${ENV.playlistID}`;
-    const headers = new HttpHeaders()
-    .set('accept', 'application/json')
-    .set('Authorization', `Bearer ${token}`)
-    return this.http.get<any>(artistUrl, { headers: headers });
-  }
-  
- /** @return  the artist List from the spotify playlist*/
-  getArtists(spotifyApiRes: any): never[] {
-    return spotifyApiRes.tracks.items.flatMap((artistItem:any) => {
-      return artistItem.track.artists.map((artist:any) => {
-        return {
-          name: artist.name,
-          id: artist.id
-        };
-      });
-    });
-  }
-
-  /** @return  the artist List */
-  getActristList() {
-    return this.actristList.asObservable();
-  }
-
-  // Update the artist List
-  setActristList(value: any) {
-    this.actristList.next(value);
-  }
-
-  //HU1
-  /** @return  the artist by tab name */
-  getArtistByTabName( artist: string, token:SpotifyApiToken ): Observable<any> {
-    const artistUrl = `${ENV.spotifyApiUrl}/search?q=${artist}&type=artist`;
+  getFromSpotifyApi(url:string, token:SpotifyApiToken): Observable<any>{
     const headers = new HttpHeaders()
     .set('accept', 'application/json')
     .set('Authorization', `Bearer ${token.access_token}`)
-    return this.http.get(artistUrl, { headers: headers });
+    return this.http.get(url, { headers: headers });
+  }
+
+  //HU1
+  /** @return  the artists by tab name */
+  getArtistByTabName( artist: string, token:SpotifyApiToken ): Observable<any>{
+    const artistUrl = `${ENV.spotifyApiUrl}/search?q=${artist}&type=artist`;
+    return this.getFromSpotifyApi(artistUrl,token)
+  }
+
+  /** @return  the artist album by id */
+  getArtistAlbumById( id:string, token:SpotifyApiToken ): Observable<any>{
+    const artistUrl = `${ENV.spotifyApiUrl}/artists/${id}/albums`;
+    return this.getFromSpotifyApi(artistUrl,token)
   }
 }

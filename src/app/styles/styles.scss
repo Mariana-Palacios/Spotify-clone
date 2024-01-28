@@ -1,0 +1,10 @@
+//base
+@import './base/reset';
+@import './base/global';
+
+@import './components/search-artist';
+//@import './shared/';
+
+//Utilities
+@import './utilities/mixins';
+@import './utilities/variables';

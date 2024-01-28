@@ -39,6 +39,7 @@ Run the following command
 | En Proceso    | ✨  |
 | Ajuste    | ⚙️  |
 | Bug    | 🐞  |
+| Css    | 🌈  |
 
 
 ## Registro de Cambios
