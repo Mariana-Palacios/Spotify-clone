@@ -5,6 +5,7 @@ import { NavbarComponent } from '@shared/navbar/navbar.component';
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { ENV } from '@constants/env';
 import { MainComponent } from '@shared/main/main.component';
+import { SearchArtistComponent } from '@components/search-artist/search-artist.component';
 
 @Component({
   selector: 'app-spotify',
@@ -12,7 +13,7 @@ import { MainComponent } from '@shared/main/main.component';
   imports: [
     CommonModule, RouterOutlet, 
     //
-    NavbarComponent, MainComponent
+    NavbarComponent, MainComponent, SearchArtistComponent
   ],
   providers: [SpotifyApiService],
   templateUrl: 'spotify.component.html',
@@ -25,13 +26,11 @@ export default class SpotifyComponent {
   public spotifyService = inject(SpotifyApiService)
 
   constructor(){
-    this.spotifyService.getToken(ENV.clientId, ENV.clientSecret).subscribe(
+    this.spotifyService.getSpotifyToken(ENV.clientId, ENV.clientSecret).subscribe(
       (data) => {
-        this.spotifyService.getPlaylist(data.access_token).subscribe(
-          (data) => {
-            this.spotifyService.setActristList(this.spotifyService.getArtists(data))
-          }
-        )
+        //spotify
+        console.log(data)
+        this.spotifyService.setToken(data)
       },
       (error) => {
         console.error('Error:', error);

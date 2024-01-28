@@ -4,3 +4,37 @@ export interface SpotifyApiToken {
     expires_in: number
 }
 
+/** Artist Interface */
+export interface Images {
+    height:string,
+    url: string,
+    width: number
+}
+
+export interface Items {
+    external_urls:{
+        spotify:string
+    },
+    followers:{
+        href:string,
+        total: number
+    },
+    genres:string[],
+    href:string,
+    id:string,
+    images: Images[],
+    name:string,
+    popularity:number,
+    type:string,
+    uri:string
+}
+
+export interface Artist {
+    href:string,
+    items:Items[],
+    limit:number,
+    next:string,
+    offset:number,
+    previous:any,
+    total:number
+}
