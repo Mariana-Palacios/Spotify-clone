@@ -36,7 +36,7 @@ Run the following command
 | Estado | Tipo     |
 |------------|----------|
 | Terminado    | ✔️ |
-| En Proceso    | 💬  |
+| En Proceso    | ✨  |
 | Ajuste    | ⚙️  |
 | Bug    | 🐞  |
 

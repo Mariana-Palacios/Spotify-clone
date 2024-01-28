@@ -1,6 +1,5 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import { CommonModule } from '@angular/common';
 
 /**
  * @title Basic cards
