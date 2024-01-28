@@ -19,13 +19,15 @@ export const mockItems: Items = {
 };
 
 export const artist:Artist = {
-    href: '',
-    items: [mockItems],
-    limit: 0,
-    next: '',
-    offset: 0,
-    previous: null,
-    total: 0
+    artists:{
+        href: '',
+        items: [mockItems],
+        limit: 0,
+        next: '',
+        offset: 0,
+        previous: null,
+        total: 0
+    }
 };
 
 export const spotifyToken:SpotifyApiToken = {

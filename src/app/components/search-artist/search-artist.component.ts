@@ -7,7 +7,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { artist, spotifyToken } from './__mock__/search-artist';
-import { Artist, SpotifyApiToken } from '@interfaces/spotifyApi';
+import { Artist, Items, SpotifyApiToken } from '@interfaces/spotifyApi';
 
 @Component({
   selector: 'app-search-artist',
@@ -22,31 +22,32 @@ import { Artist, SpotifyApiToken } from '@interfaces/spotifyApi';
 })
 export class SearchArtistComponent {     
 
-  displayedColumns: string[] = ['id', 'name'];
-  dataSource: MatTableDataSource<Artist>;
+  displayedColumns: string[] = ['id','img','name'];
+  dataSource: MatTableDataSource<Items>;
 
   public isSearching:boolean = false
   token = signal(spotifyToken)
   public filterValue:string
+  public prueba = artist
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   public spotifyService = inject(SpotifyApiService)
-  public users:any = [artist]
+  users = signal(artist)
 
   constructor() {
     this.spotifyService.getToken().subscribe(
       (data) => {
+        this.prueba = artist
         this.token.set(data)
+        this.setDataSource()
       },
       (error) => {
         console.error('Error:', error);
       }
     )
-    this.dataSource = new MatTableDataSource([artist]);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
   }
 
   applyFilter(event: Event) {
@@ -57,16 +58,25 @@ export class SearchArtistComponent {
     }
   }
 
+  setDataSource(){
+    this.dataSource = new MatTableDataSource(this.prueba.artists.items /*this.users().artists.items*/);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+
   toggleSearching(){
     this.isSearching = true 
     if(this.isSearching){
       this.spotifyService.getArtistByTabName(this.filterValue, this.token()).subscribe(
         (data) => {
           this.isSearching = false
-          console.log(data)
+          this.prueba = data
+          this.setDataSource()
+          this.users.set(data)
+          console.log(this.users())
         },
         (error)=>{
-          console.log(error)
           this.isSearching = false
         }
       )

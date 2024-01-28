@@ -80,6 +80,6 @@ export class SpotifyApiService {
     const headers = new HttpHeaders()
     .set('accept', 'application/json')
     .set('Authorization', `Bearer ${token.access_token}`)
-    return this.http.get<Artist[]>(artistUrl, { headers: headers });
+    return this.http.get(artistUrl, { headers: headers });
   }
 }

@@ -30,11 +30,13 @@ export interface Items {
 }
 
 export interface Artist {
-    href:string,
-    items:Items[],
-    limit:number,
-    next:string,
-    offset:number,
-    previous:any,
-    total:number
+    artists:{
+        href:string,
+        items:Items[],
+        limit:number,
+        next:string,
+        offset:number,
+        previous:any,
+        total:number
+    }
 }
