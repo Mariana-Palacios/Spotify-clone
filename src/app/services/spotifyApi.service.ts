@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SpotifyApiToken } from '@interfaces/spotifyApi';
 import { Subject } from 'rxjs';
 import { ENV } from '@constants/env';
@@ -14,6 +14,8 @@ export class SpotifyApiService<T> {
 
   public actristList = new Subject<any>();
   public spotifyToken = new Subject<any>();
+  public actristAlbums:BehaviorSubject<any> = new BehaviorSubject<any>('');
+ //public actristAlbums:any
 
   constructor(){
     this.actristList.next([{'name':'','id':''}])
@@ -58,13 +60,34 @@ export class SpotifyApiService<T> {
 
   //HU2
 
-  //actristAlbums = signal();
+  //ALBUMS
+  setActristAlbums(albums:any) {
+    this.actristAlbums.next(albums)
+  }
 
-  
+  getActristAlbums(){
+    return this.actristAlbums.asObservable();
+  }
 
   /** @return  the artist album by id */
   getArtistAlbumById( id:string, token:SpotifyApiToken ): Observable<any>{
     const artistUrl = `${ENV.spotifyApiUrl}/artists/${id}/albums`;
     return this.getFromSpotifyApi(artistUrl,token)
   }
+
+  //TOP TRACKS
+  setActrisTopTracks(albums:any) {
+    this.actristAlbums.next(albums)
+  }
+
+  getActrisTopTracks(){
+    return this.actristAlbums.asObservable();
+  }
+
+  /** @return  the artist top tracks by id */
+  getActrisTopTracksById( id:string, token:SpotifyApiToken ): Observable<any>{
+    const artistUrl = `${ENV.spotifyApiUrl}/artists/${id}/top-tracks`;
+    return this.getFromSpotifyApi(artistUrl,token)
+  }
+
 }

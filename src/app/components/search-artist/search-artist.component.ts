@@ -10,6 +10,7 @@ import { artist, spotifyToken } from './__mock__/search-artist';
 import { Items } from '@interfaces/spotifyApi';
 import {MatIconModule} from '@angular/material/icon';
 import UtilsPipe from '../../utils/utils.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-artist',
@@ -36,6 +37,7 @@ export class SearchArtistComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   public spotifyService = inject(SpotifyApiService)
+  public router = inject(Router)
 
   constructor() {
     this.spotifyService.getToken().subscribe(
@@ -61,6 +63,26 @@ export class SearchArtistComponent {
     this.dataSource = new MatTableDataSource(this.prueba.artists.items );
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  searchArtistAlbums(id:any, name:string){
+    this.spotifyService.getArtistAlbumById(id, this.token()).subscribe(
+      (data)=>{
+        this.spotifyService.setActristAlbums(data)
+      }
+    )
+    this.spotifyService.getActrisTopTracksById('0TnOYISbd1XYRBk9myaseg', this.token()).subscribe(
+      (data)=>{
+        console.log('PRUEBA')
+        console.log(data)
+        this.spotifyService.setActrisTopTracks(data)
+      },
+      (error)=>{
+        console.log('No funciono'+ error)
+      }
+    )
+    // Cambiar la ruta a la /spotify/artist/artist-name
+    this.router.navigate(['//spotify/artist/'+name]);
   }
 
   toggleSearching(){

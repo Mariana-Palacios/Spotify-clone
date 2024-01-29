@@ -28,7 +28,7 @@ export default class SpotifyComponent {
     this.spotifyService.getSpotifyToken(ENV.clientId, ENV.clientSecret).subscribe(
       (data) => {
         //spotify
-        console.log(data)
+        //console.log(data)
         this.spotifyService.setToken(data)
         /*
         this.spotifyService.getArtistAlbumById('0EmeFodog0BfCgMzAIvKQp',data).subscribe(
