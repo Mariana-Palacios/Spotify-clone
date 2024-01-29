@@ -86,7 +86,7 @@ export class SpotifyApiService<T> {
 
   /** @return  the artist top tracks by id */
   getActrisTopTracksById( id:string, token:SpotifyApiToken ): Observable<any>{
-    const artistUrl = `${ENV.spotifyApiUrl}/artists/${id}/top-tracks`;
+    const artistUrl = `${ENV.spotifyApiUrl}/artists/${id}/top-tracks?market=ES`;
     return this.getFromSpotifyApi(artistUrl,token)
   }
 
