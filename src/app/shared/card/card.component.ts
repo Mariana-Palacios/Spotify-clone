@@ -1,13 +1,18 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 /**
  * @title Basic cards
  */
 @Component({
-  selector: 'card.component.css',
+  selector: 'app-card',
+  styleUrl: 'card.component.css',
   templateUrl: 'card.component.html',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule,MatIconModule],
 })
-export class CardComponent { }
+export class CardComponent { 
+  @Input({ required: true }) title!: string;
+  @Input({ required: true }) year!: string;
+}

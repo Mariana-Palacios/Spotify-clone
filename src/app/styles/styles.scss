@@ -3,7 +3,9 @@
 @import './base/global';
 
 @import './components/search-artist';
-//@import './shared/';
+
+//shared
+@import './shared/card';
 
 //Utilities
 @import './utilities/mixins';

@@ -9,12 +9,14 @@ import { SpotifyApiService } from '@services/spotifyApi.service';
 import { artist, spotifyToken } from './__mock__/search-artist';
 import { Items } from '@interfaces/spotifyApi';
 import {MatIconModule} from '@angular/material/icon';
+import UtilsPipe from '../../utils/utils.pipe';
+
 @Component({
   selector: 'app-search-artist',
   standalone: true,
   imports: [
   CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, 
-    MatSortModule, MatPaginatorModule, MatIconModule
+    MatSortModule, MatPaginatorModule, MatIconModule, UtilsPipe
   ],
   templateUrl: './search-artist.component.html',
   styleUrl: './search-artist.component.css',
@@ -68,7 +70,6 @@ export class SearchArtistComponent {
         (data) => {
           this.isSearching = false
           this.prueba = data
-          console.log(this.prueba)
           this.setDataSource()
         },
         (error)=>{

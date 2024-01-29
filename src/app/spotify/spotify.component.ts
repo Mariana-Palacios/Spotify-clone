@@ -30,6 +30,18 @@ export default class SpotifyComponent {
         //spotify
         console.log(data)
         this.spotifyService.setToken(data)
+        /*
+        this.spotifyService.getArtistAlbumById('0EmeFodog0BfCgMzAIvKQp',data).subscribe(
+          (data) =>{
+            console.log('Album')
+            console.log(data)
+          },
+          (error) =>{
+            console.log('No funciono')
+            console.log(error)
+          }
+        )
+        */
       },
       (error) => {
         console.error('Error:', error);

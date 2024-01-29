@@ -14,7 +14,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> # Artist </th>
       <td mat-cell *matCellDef="let row; let i = index;">
         <a [href]="'/spotify/artist/' + row.name">{{i+1}} 
-          <img [src]="row.images[0].url" alt="row.name" width="50" height="50">
+          <img [src]="row.images.length > 0 ? row.images[0].url : 'assets/spotify_logo.png'" alt="row.name" width="50" height="50">
           {{row.name}} 
         </a>
       </td>

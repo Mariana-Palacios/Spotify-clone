@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SpotifyApiToken } from '@interfaces/spotifyApi';
@@ -8,7 +8,7 @@ import { ENV } from '@constants/env';
 @Injectable({
   providedIn: 'root'
 })
-export class SpotifyApiService {
+export class SpotifyApiService<T> {
 
   private http = inject( HttpClient )
 
@@ -55,6 +55,12 @@ export class SpotifyApiService {
     const artistUrl = `${ENV.spotifyApiUrl}/search?q=${artist}&type=artist`;
     return this.getFromSpotifyApi(artistUrl,token)
   }
+
+  //HU2
+
+  //actristAlbums = signal();
+
+  
 
   /** @return  the artist album by id */
   getArtistAlbumById( id:string, token:SpotifyApiToken ): Observable<any>{
