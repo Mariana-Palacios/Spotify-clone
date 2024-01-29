@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '@shared/navbar/navbar.component';
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { ENV } from '@constants/env';
-import { MainComponent } from '@shared/main/main.component';
 import { SearchArtistComponent } from '@components/search-artist/search-artist.component';
 
 @Component({
@@ -13,7 +12,7 @@ import { SearchArtistComponent } from '@components/search-artist/search-artist.c
   imports: [
     CommonModule, RouterOutlet, 
     //
-    NavbarComponent, MainComponent, SearchArtistComponent
+    NavbarComponent, SearchArtistComponent
   ],
   providers: [SpotifyApiService],
   templateUrl: 'spotify.component.html',
