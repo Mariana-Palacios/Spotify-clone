@@ -69,16 +69,17 @@ export class SearchArtistComponent {
     this.spotifyService.getArtistAlbumById(id, this.token()).subscribe(
       (data)=>{
         this.spotifyService.setActristAlbums(data)
+      },
+      (error)=>{
+        console.log(error)
       }
     )
-    this.spotifyService.getActrisTopTracksById('0TnOYISbd1XYRBk9myaseg', this.token()).subscribe(
+    this.spotifyService.getActrisTopTracksById(id, this.token()).subscribe(
       (data)=>{
-        console.log('PRUEBA')
-        console.log(data)
         this.spotifyService.setActrisTopTracks(data)
       },
       (error)=>{
-        console.log('No funciono'+ error)
+        console.log(error)
       }
     )
     // Cambiar la ruta a la /spotify/artist/artist-name

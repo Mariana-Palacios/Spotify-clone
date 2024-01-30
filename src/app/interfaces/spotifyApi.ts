@@ -6,7 +6,7 @@ export interface SpotifyApiToken {
 
 /** Artist Interface */
 export interface Images {
-    height:string,
+    height:number,
     url: string,
     width: number
 }

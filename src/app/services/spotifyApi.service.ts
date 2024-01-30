@@ -12,14 +12,10 @@ export class SpotifyApiService<T> {
 
   private http = inject( HttpClient )
 
-  public actristList = new Subject<any>();
   public spotifyToken = new Subject<any>();
-  public actristAlbums:BehaviorSubject<any> = new BehaviorSubject<any>('');
- //public actristAlbums:any
+  public actristTopTracks:BehaviorSubject<any> = new BehaviorSubject<any>(false);
+  public actristAlbums:BehaviorSubject<any> = new BehaviorSubject<any>(false);
 
-  constructor(){
-    this.actristList.next([{'name':'','id':''}])
-  }
 
  /**
  * Get spotify token.
@@ -76,12 +72,12 @@ export class SpotifyApiService<T> {
   }
 
   //TOP TRACKS
-  setActrisTopTracks(albums:any) {
-    this.actristAlbums.next(albums)
+  setActrisTopTracks(topTracks:any) {
+    this.actristTopTracks.next(topTracks)
   }
 
   getActrisTopTracks(){
-    return this.actristAlbums.asObservable();
+    return this.actristTopTracks.asObservable();
   }
 
   /** @return  the artist top tracks by id */

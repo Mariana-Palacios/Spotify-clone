@@ -3,10 +3,24 @@
                 <h1>Shakira</h1>
                 <p>monthly listeners</p>
         </div>
-        <div>
-                <h2>Albums</h2>
-                <app-card title="hola" year="2011"></app-card>
-                <h2>Top Tracks</h2>
-                <app-card title="hola" year="2011"></app-card>
-        </div>
+        @if(isActive()){
+                <div>
+                        @if(albums()){
+                                <h2>Albums</h2>
+                                @for(album of albums().items; track album){
+                                        <app-card-album [title]="album.name" [year]="album.release_date" (click)="toggleDescription()"></app-card-album>
+                                }
+                        }
+                        @if(topTracks()){
+                                <h2>Top Tracks</h2>
+                                @for(topTrack of topTracks().tracks; track topTrack){
+                                        <app-card-album [title]="topTrack.name" year="2011" (click)="toggleDescription()"></app-card-album>
+                                }
+                        }
+                </div>
+        }
+        @else{
+                <h1>HELLO WORLD</h1>
+        }
+
 </section>
