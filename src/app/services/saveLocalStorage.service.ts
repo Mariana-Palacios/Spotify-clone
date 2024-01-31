@@ -8,21 +8,25 @@ import { mockDescription } from '@components/artist/__mocks__/mockDescription';
 })
 export class SaveLocalStorageService {
 
-  private _favoriteHistory : Description[] = []
+  public _favoriteHistory:BehaviorSubject<Description[]> = new BehaviorSubject<any>([]);
+  //private _favoriteHistory : Description[] = []
   constructor() {
     this.loadLocalStorage();
   }
 
   get favoriteHistory(){
-    return [...this._favoriteHistory]
+    return this._favoriteHistory.asObservable()
   }
 
   organizeFavorite( favorite:Description ){
-    if( this._favoriteHistory ){
-      this._favoriteHistory = this._favoriteHistory.filter( (oldFavorite) => oldFavorite !== favorite )
+    let currentHistory = this._favoriteHistory.value
+
+    if( currentHistory ){
+      currentHistory = currentHistory.filter( (oldFavorite) => oldFavorite !== favorite )
     }
-    this._favoriteHistory.unshift( favorite )
-    this._favoriteHistory = this.favoriteHistory.slice(0,10)
+    currentHistory.unshift( favorite )
+    currentHistory = currentHistory.slice(0,10)
+    this._favoriteHistory.next(currentHistory);
     this.saveLocalStorage()
   }
 
@@ -32,16 +36,17 @@ export class SaveLocalStorageService {
 
   //Local storage 
 
-  private saveLocalStorage():void {
-    localStorage.setItem('history', JSON.stringify( this._favoriteHistory ));
+  private saveLocalStorage(): void {
+    localStorage.setItem('history', JSON.stringify(this._favoriteHistory.value));
   }
-  
-  private loadLocalStorage():void {
-    if( !localStorage.getItem('history')) return;
 
-    this._favoriteHistory = JSON.parse( localStorage.getItem('history')! );
-
-    if ( this._favoriteHistory.length === 0 ) return;
+  private loadLocalStorage(): void {
+    const storedHistory = localStorage.getItem('history');
+    
+    if (storedHistory) {
+      const parsedHistory = JSON.parse(storedHistory) as Description[];
+      this._favoriteHistory.next(parsedHistory);
+    }
   }
   
 }
