@@ -1,4 +1,4 @@
-<section>
+<section class="artist">
         <div><!-- imagen -->
                 <h1>Shakira</h1>
                 <p>monthly listeners</p>
@@ -8,19 +8,21 @@
                         @if(albums()){
                                 <h2>Albums</h2>
                                 @for(album of albums().items; track album){
-                                        <app-card-album [title]="album.name" [year]="album.release_date" (click)="toggleDescription()"></app-card-album>
+                                        <app-card-album [title]="album.name" [year]="album.release_date" (click)="toggleDescription('Album', album)"></app-card-album>
                                 }
                         }
                         @if(topTracks()){
                                 <h2>Top Tracks</h2>
-                                @for(topTrack of topTracks().tracks; track topTrack){
-                                        <app-card-album [title]="topTrack.name" year="2011" (click)="toggleDescription()"></app-card-album>
+                                @for(topTrack of topTracks().tracks; track topTrack; let index = $index){
+                                        <app-card-album [title]="topTrack.name" year="2011" (click)="toggleDescription('Tracks',topTrack)"></app-card-album>
                                 }
                         }
                 </div>
         }
         @else{
-                <h1>HELLO WORLD</h1>
+                <div class="description">
+                        <app-card-description [description]="description()"></app-card-description>
+                </div>
         }
 
 </section>

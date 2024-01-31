@@ -3,16 +3,20 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { CardAlbumComponent } from '@shared/card-album/card-album.component';
 import { Tracks } from '@interfaces/tracks';
+import { Albums } from '@interfaces/albums';
+import { CardDescriptionComponent } from '@shared/card-description/card-description.component';
+import { Description } from '@interfaces/card-description'
+import { mockDescription } from './__mocks__/mockDescription';
 import { mockTracks } from './__mocks__/mockTracks';
 import { mockAlbums } from './__mocks__/mockAlbums';
-import { Albums } from '@interfaces/albums';
 
 @Component({
   selector: 'app-artist',
   standalone: true,
   imports: [
     CommonModule,
-    CardAlbumComponent
+    CardAlbumComponent,
+    CardDescriptionComponent
   ],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.css',
@@ -23,29 +27,63 @@ export default class ArtistComponent {
 
   albums = signal<Albums>(mockAlbums)
   topTracks = signal<Tracks>(mockTracks)
+  description = signal<Description>(mockDescription)
   isActive = signal<boolean>(true)
 
   constructor(){
     this.spotifyService.getActristAlbums().subscribe(
       (data)=>{
         this.albums.set(data)
-        console.log('Albums')
-        console.log(this.albums())
+        console.log(data)
       }
     )
     this.spotifyService.getActrisTopTracks().subscribe(
       (data)=>{
         this.topTracks.set(data)
-        console.log('top Tracks')
-        console.log(this.topTracks().tracks)
+        console.log(data)
       }
     )
   }
-
-  toggleDescription(){
+  
+  toggleDescription(type:string,description:any){
     console.log('Toggle description')
-    console.log('Antes:'+this.isActive())
-    this.isActive.set(!this.isActive())
-    console.log('Despues:'+this.isActive())
+    console.log(description)
+    switch (type) {
+      case 'Album': 
+        const album:Description = {
+          logo: {
+            url: description.images[0].url ? description.images[0].url : 'assets/spotify_logo.png'
+          },
+          type: type,
+          title: description.name,
+          nameArtist: description.artists[0].name,
+          year: description.release_date,
+          countSongs: description.total_tracks
+        }
+        this.isActive.set(!this.isActive())
+        return this.description.set(album)
+      case 'Tracks':
+        const tracks:Description = {
+          logo: {
+            url: description.album.images[0].url ? description.album.images[0].url : 'assets/spotify_logo.png'
+          },
+          type: 'Song',
+          title: description.name,
+          img: {
+            url: ''
+          },
+          nameArtist: description.artists[0].name,
+          nameAlbum: description.album.name,
+          year: description.album.release_date,
+          countSongs: description.popularity,
+          time: description.duration_ms
+        }
+        this.isActive.set(!this.isActive())
+        return this.description.set(tracks)
+      default:
+        console.log('Default')
+        this.isActive.set(!this.isActive())
+        return this.description.set(mockDescription)
+    }
   }
 }

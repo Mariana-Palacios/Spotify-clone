@@ -1,0 +1,32 @@
+.card{
+        width: 100vw;
+        height: auto;
+        background-color: transparent;
+        color: white !important;
+        background-color: red;
+        &__side{
+                margin-left: 16px;
+        }
+        &__logo{
+                width: 23%;
+                min-width: 128px;
+                height: auto;
+                margin: 15% 0px 0px 0px;
+        }
+        &__title{
+                font-size: 2rem;
+        }
+        &__description{
+                font-size: 14px;
+        }
+}
+.mat-mdc-card-subtitle{
+        color: white;
+}
+.mat-mdc-card-title-group{
+        align-items: flex-end !important;
+        justify-content: flex-start !important;
+}
+.mat-mdc-card-header {
+        padding: 0;
+}
