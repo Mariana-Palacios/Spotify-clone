@@ -7,7 +7,7 @@ export const routes: Routes = [
         children:[
             {
                 path:'artist/:name',
-                title: 'artist view',
+                title: 'spotify',
                 loadComponent: () => import('@components/artist/artist.component')
             }
         ]

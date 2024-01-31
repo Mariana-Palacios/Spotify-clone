@@ -2,23 +2,20 @@
   width: 100%;
   height: auto;
   background-color: transparent;
-  color: white !important;
-  background-color: red;
+  background-color: aquamarine;
 }
 .card__side {
-  margin-left: 16px;
+  margin-left: 8px;
 }
 .card__logo {
-  width: 23%;
-  min-width: 128px;
-  height: auto;
-  margin: 8% 0px 0px 0px;
+  width: 48px;
+  height: 48px;
 }
 .card__title {
-  font-size: 2rem;
+  font-size: 14px;
 }
 .card__description {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .mat-mdc-card-subtitle {
@@ -32,4 +29,4 @@
 
 .mat-mdc-card-header {
   padding: 0;
-}/*# sourceMappingURL=card-description.component.css.map */
+}/*# sourceMappingURL=card-playlist.component.css.map */

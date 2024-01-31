@@ -6,9 +6,11 @@ import { Tracks } from '@interfaces/tracks';
 import { Albums } from '@interfaces/albums';
 import { CardDescriptionComponent } from '@shared/card-description/card-description.component';
 import { Description } from '@interfaces/card-description'
+import { MatIconModule } from '@angular/material/icon';
 import { mockDescription } from './__mocks__/mockDescription';
 import { mockTracks } from './__mocks__/mockTracks';
 import { mockAlbums } from './__mocks__/mockAlbums';
+import { SaveLocalStorageService } from '@services/saveLocalStorage.service';
 
 @Component({
   selector: 'app-artist',
@@ -16,7 +18,8 @@ import { mockAlbums } from './__mocks__/mockAlbums';
   imports: [
     CommonModule,
     CardAlbumComponent,
-    CardDescriptionComponent
+    CardDescriptionComponent,
+    MatIconModule
   ],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.css',
@@ -24,7 +27,8 @@ import { mockAlbums } from './__mocks__/mockAlbums';
 })
 export default class ArtistComponent { 
   public spotifyService = inject(SpotifyApiService)
-
+  public saveLocalStorage = inject(SaveLocalStorageService)
+  
   albums = signal<Albums>(mockAlbums)
   topTracks = signal<Tracks>(mockTracks)
   description = signal<Description>(mockDescription)
@@ -34,13 +38,11 @@ export default class ArtistComponent {
     this.spotifyService.getActristAlbums().subscribe(
       (data)=>{
         this.albums.set(data)
-        console.log(data)
       }
     )
     this.spotifyService.getActrisTopTracks().subscribe(
       (data)=>{
         this.topTracks.set(data)
-        console.log(data)
       }
     )
   }

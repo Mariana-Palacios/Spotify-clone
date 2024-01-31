@@ -1,3 +1,4 @@
-:host {
-  display: block;
-}
+.spotify {
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=spotify.component.css.map */

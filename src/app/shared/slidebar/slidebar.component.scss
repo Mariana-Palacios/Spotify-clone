@@ -1,0 +1,30 @@
+.slidebar{
+        width: 317px;
+        height: calc(100vh - 16px);
+        margin-right: 8px;
+        &__option{
+                display: flex;
+                flex-direction: column;
+                &-short{
+                        height: 104px;
+                        width: 100%;
+                        background-color:hsla(0,0%,100%,.07)!important;
+                        border-radius: 8px;
+                        margin-bottom: 8px;
+                        display: flex;
+                        flex-direction: column;
+                }
+                &-long{
+                        height: calc(100% - 112px);
+                        width: 100%;
+                        background-color: hsla(0,0%,100%,.07)!important;
+                        border-radius: 8px;
+                        padding: 8px;
+
+                }
+        }
+        &__library{
+                display: flex;
+                justify-content: space-between;
+        }
+}

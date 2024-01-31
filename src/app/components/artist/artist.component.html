@@ -22,6 +22,12 @@
         @else{
                 <div class="description">
                         <app-card-description [description]="description()"></app-card-description>
+                        <div>
+                                <mat-icon aria-hidden="false" aria-label="play_arrow" fontIcon="play_arrow"></mat-icon>
+                                <button (click)="saveLocalStorage.organizeFavorite(description())">
+                                        <mat-icon aria-hidden="false" aria-label="favorite" fontIcon="favorite"></mat-icon>
+                                </button>
+                        </div>
                 </div>
         }
 

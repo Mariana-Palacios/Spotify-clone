@@ -1,0 +1,43 @@
+<aside class="slidebar">
+        <div class="slidebar__option-short">
+                <button>
+                        <mat-icon aria-hidden="false" aria-label="home" fontIcon="home"></mat-icon>
+                        Home
+                </button>
+                <button>
+                        <mat-icon aria-hidden="false" aria-label="search" fontIcon="search"></mat-icon>
+                        Search
+                </button>
+        </div>
+        <div class="slidebar__option-long">
+                <div class="slidebar__library">
+                        <span>
+                                <mat-icon aria-hidden="false" aria-label="library_music" fontIcon="library_music"></mat-icon>
+                                Your Library
+                        </span>
+                        <button>
+                                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
+                        </button>
+                </div>
+                <div>
+                        @if(favorites().length !== 0){
+                                @for(favorite of favorites(); track favorite){
+                                        <app-card-playlist [description]="favorite"></app-card-playlist>
+                                }
+                        }
+                        @else{
+                                Empty
+                                <mat-icon aria-hidden="false" aria-label="hide_source" fontIcon="hide_source"></mat-icon>
+                        }
+                </div>
+        </div>
+</aside>
+
+<!--
+
+<mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete"></mat-icon>
+<mat-icon aria-hidden="false" aria-label="arrow_back_ios" fontIcon="arrow_back_ios"></mat-icon>
+<mat-icon aria-hidden="false" aria-label="arrow_forward_ios" fontIcon="arrow_forward_ios"></mat-icon>
+<mat-icon aria-hidden="false" aria-label="favorite" fontIcon="favorite"></mat-icon>
+
+-->

@@ -1,14 +1,38 @@
 @import '../utilities/variables';
+@import '../utilities/mixins';
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: $background-base !important;
-    //color: $text-base
+    color: white;
 }
 
 html {
+    padding: 8px;
     font-size: 16px;
+}
+
+main, html{
+    background-color: #000;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    color: #B3B3B3;
+}
+button:hover{
+    cursor: pointer;
+    animation: cambioColor 0.25s linear;
+    color: #fff;
 }
 
 @media screen and (max-width: 600px) {

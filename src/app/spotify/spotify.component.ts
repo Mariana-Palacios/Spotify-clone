@@ -1,18 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '@shared/navbar/navbar.component';
 import { SpotifyApiService } from '@services/spotifyApi.service';
 import { ENV } from '@constants/env';
+import { SlidebarComponent } from '@shared/slidebar/slidebar.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { SearchArtistComponent } from '@components/search-artist/search-artist.component';
 
 @Component({
   selector: 'app-spotify',
   standalone: true,
   imports: [
-    CommonModule, RouterOutlet, 
+    CommonModule, RouterOutlet, MatGridListModule,
     //
-    NavbarComponent, SearchArtistComponent
+    SearchArtistComponent, SlidebarComponent, 
   ],
   providers: [SpotifyApiService],
   templateUrl: 'spotify.component.html',
@@ -27,29 +28,11 @@ export default class SpotifyComponent {
   constructor(){
     this.spotifyService.getSpotifyToken(ENV.clientId, ENV.clientSecret).subscribe(
       (data) => {
-        //spotify
-        //console.log(data)
         this.spotifyService.setToken(data)
-        /*
-        this.spotifyService.getArtistAlbumById('0EmeFodog0BfCgMzAIvKQp',data).subscribe(
-          (data) =>{
-            console.log('Album')
-            console.log(data)
-          },
-          (error) =>{
-            console.log('No funciono')
-            console.log(error)
-          }
-        )
-        */
       },
       (error) => {
         console.error('Error:', error);
       }
     )
   }
-  ngOnInit(): void {
-
-  }
-
 }

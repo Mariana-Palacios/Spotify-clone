@@ -1,3 +1,29 @@
-:host {
-  display: block;
+.slidebar {
+  width: 317px;
+  height: calc(100vh - 16px);
+  margin-right: 8px;
 }
+.slidebar__option {
+  display: flex;
+  flex-direction: column;
+}
+.slidebar__option-short {
+  height: 104px;
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.07) !important;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.slidebar__option-long {
+  height: calc(100% - 112px);
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.07) !important;
+  border-radius: 8px;
+  padding: 8px;
+}
+.slidebar__library {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=slidebar.component.css.map */
