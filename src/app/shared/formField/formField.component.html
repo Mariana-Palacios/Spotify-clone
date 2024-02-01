@@ -1,0 +1,47 @@
+<form [formGroup]="newSongOrAlbumGroup" (ngSubmit)="onSubmit()">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="type">
+                  <mat-option value="Album">Album</mat-option>
+                  <mat-option value="Song">Song</mat-option>
+                </mat-select>
+        </mat-form-field>
+        
+        @if(newSongOrAlbumGroup.get('type')?.value !== ''){
+                <mat-form-field>
+                        <mat-label>Artist name</mat-label>
+                        <input matInput placeholder="Artist name" formControlName="nameArtist" required>
+                </mat-form-field>
+                @if(newSongOrAlbumGroup.get('type')?.value === 'Song'){
+                        <mat-form-field>
+                                <mat-label>Album Name</mat-label>
+                                <input matInput placeholder="Album Name" formControlName="nameAlbum" required>
+                        </mat-form-field>
+                }
+                <mat-form-field>
+                        <mat-label>Title {{newSongOrAlbumGroup.get('type')?.value}}</mat-label>
+                        <input matInput placeholder="Title" formControlName="title" required>
+                </mat-form-field>
+                <mat-form-field>
+                        <mat-label>Logo {{newSongOrAlbumGroup.get('type')?.value}}</mat-label>
+                        <input matInput type="url" placeholder="Logo" formControlName="logo" required>
+                </mat-form-field>
+                <mat-form-field>
+                        <mat-label>Artist Image</mat-label>
+                        <input matInput type="url" placeholder="Artist Image" formControlName="img">
+                </mat-form-field>
+                <mat-form-field>
+                        <mat-label>Year </mat-label>
+                        <input matInput placeholder="Year" formControlName="year" required>
+                </mat-form-field>
+                <mat-form-field>
+                        <mat-label>{{newSongOrAlbumGroup.get('type')?.value === 'Song' ? 'Popularity' : 'N° Songs' }}</mat-label>
+                        <input matInput type="number" placeholder="" formControlName="countSongs" required>
+                </mat-form-field>
+        }
+
+        <div>
+          <button type="submit" mat-button matStepperNext>Next</button>
+        </div>
+</form>

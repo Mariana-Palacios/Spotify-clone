@@ -58,6 +58,9 @@ export default class ArtistComponent {
           },
           type: type,
           title: description.name,
+          img: {
+            url: ''
+          },
           nameArtist: description.artists[0].name,
           year: description.release_date,
           countSongs: description.total_tracks
