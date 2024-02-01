@@ -4,7 +4,7 @@
                         <mat-icon aria-hidden="false" aria-label="home" fontIcon="home"></mat-icon>
                         Home
                 </button>
-                <button>
+                <button (click)="changePath('')">
                         <mat-icon aria-hidden="false" aria-label="search" fontIcon="search"></mat-icon>
                         Search
                 </button>
@@ -15,8 +15,8 @@
                                 <mat-icon aria-hidden="false" aria-label="library_music" fontIcon="library_music"></mat-icon>
                                 Your Library
                         </span>
-                        <button>
-                                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
+                        <button (click)="changePath('add')">
+                                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon> add
                         </button>
                 </div>
                 <div>

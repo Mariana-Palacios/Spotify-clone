@@ -1,4 +1,4 @@
-<form [formGroup]="newSongOrAlbumGroup" (ngSubmit)="onSubmit()">
+<form [formGroup]="newSongOrAlbumGroup" (ngSubmit)="onSubmit()" class="form">
         <ng-template matStepLabel>Fill out your name</ng-template>
         <mat-form-field>
                 <mat-label>Select</mat-label>
@@ -42,6 +42,6 @@
         }
 
         <div>
-          <button type="submit" mat-button matStepperNext>Next</button>
+          <button type="submit" mat-button matStepperNext>Add {{newSongOrAlbumGroup.get('type')?.value}}</button>
         </div>
 </form>

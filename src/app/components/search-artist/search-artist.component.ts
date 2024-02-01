@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   styleUrl: './search-artist.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchArtistComponent {     
+export default class SearchArtistComponent {     
 
   displayedColumns: string[] = ['id'];
   dataSource: MatTableDataSource<Items>;
@@ -82,7 +82,6 @@ export class SearchArtistComponent {
         console.log(error)
       }
     )
-    // Cambiar la ruta a la /spotify/artist/artist-name
     this.router.navigate(['//spotify/artist/'+name]);
   }
 

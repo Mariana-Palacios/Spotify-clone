@@ -5,8 +5,6 @@ import { SpotifyApiService } from '@services/spotifyApi.service';
 import { ENV } from '@constants/env';
 import { SlidebarComponent } from '@shared/slidebar/slidebar.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { SearchArtistComponent } from '@components/search-artist/search-artist.component';
-import { FormFieldComponent } from '@shared/formField/formField.component';
 
 @Component({
   selector: 'app-spotify',
@@ -14,7 +12,7 @@ import { FormFieldComponent } from '@shared/formField/formField.component';
   imports: [
     CommonModule, RouterOutlet, MatGridListModule,
     //
-    SearchArtistComponent, SlidebarComponent, FormFieldComponent
+    SlidebarComponent
   ],
   providers: [SpotifyApiService],
   templateUrl: 'spotify.component.html',

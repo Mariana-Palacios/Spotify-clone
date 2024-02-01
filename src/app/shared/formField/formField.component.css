@@ -1,7 +1,5 @@
-.example-input-wrapper {
-  margin-bottom: 16px;
-}
-
-label {
-  margin-right: 4px;
-}
+.form {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}/*# sourceMappingURL=formField.component.css.map */

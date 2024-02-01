@@ -6,7 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { SaveLocalStorageService } from '@services/saveLocalStorage.service';
 import { CardPlaylistComponent } from '@shared/card-playlist/card-playlist.component';
 import { Description } from '@interfaces/card-description';
-import { mockDescription } from '@components/artist/__mocks__/mockDescription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slidebar',
@@ -21,6 +21,7 @@ import { mockDescription } from '@components/artist/__mocks__/mockDescription';
 export class SlidebarComponent {
 
   public saveLocalStorage = inject(SaveLocalStorageService)
+  public router = inject(Router)
 
   favorites = signal<Description[] | []>([])
 
@@ -30,6 +31,10 @@ export class SlidebarComponent {
         this.favorites.set(data)
       }
     )
+  }
+
+  changePath(path:string):void{
+    this.router.navigate(['//spotify/'+path]);
   }
 
 }

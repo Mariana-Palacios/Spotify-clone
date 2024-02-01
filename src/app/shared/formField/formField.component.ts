@@ -18,7 +18,6 @@ import {
 } from '@angular/forms';
 import { SaveLocalStorageService } from '@services/saveLocalStorage.service';
 
-
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -43,11 +42,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrl: './formField.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormFieldComponent {
+export default class FormFieldComponent {
 
   private fb = inject(FormBuilder)
   public saveLocalStorage = inject(SaveLocalStorageService)
-
 
   isActive = signal(false)  
 
