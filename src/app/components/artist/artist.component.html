@@ -3,15 +3,19 @@
                 <div>
                         @if(albums()){
                                 <h2>Albums</h2>
-                                @for(album of albums().items; track album){
-                                        <app-card-album [title]="album.name" [year]="album.release_date" (click)="toggleDescription('Album', album)"></app-card-album>
-                                }
+                                <div class="container">
+                                        @for(album of albums().items; track album){
+                                                <app-card-album [title]="album.name" [year]="album.release_date" [img]="this.selectionImg(album.images[0].url)" (click)="toggleDescription('Album', album)"></app-card-album>
+                                        }
+                                </div>
                         }
                         @if(topTracks()){
                                 <h2>Top Tracks</h2>
-                                @for(topTrack of topTracks().tracks; track topTrack; let index = $index){
-                                        <app-card-album [title]="topTrack.name" year="2011" (click)="toggleDescription('Tracks',topTrack)"></app-card-album>
-                                }
+                                <div class="container">
+                                        @for(topTrack of topTracks().tracks; track topTrack; let index = $index){
+                                                <app-card-album [title]="topTrack.name" [year]="topTrack.duration_ms | timeMs" [img]="this.selectionImg(topTrack.album[0].images[0].url)" (click)="toggleDescription('Tracks',topTrack)"></app-card-album>
+                                        }
+                                </div>
                         }
                 </div>
         }
@@ -19,7 +23,7 @@
                 <div class="description">
                         <app-card-description [description]="description()"></app-card-description>
                         <div>
-                                <mat-icon aria-hidden="false" aria-label="play_arrow" fontIcon="play_arrow"></mat-icon>
+                                <mat-icon aria-hidden="false" aria-label="play_arrow" fontIcon="play_arrow" class="arrow btn-center"></mat-icon>
                                 <button (click)="saveLocalStorage.organizeFavorite(description())">
                                         <mat-icon aria-hidden="false" aria-label="favorite" fontIcon="favorite"></mat-icon>
                                 </button>

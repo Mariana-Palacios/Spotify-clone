@@ -11,3 +11,8 @@
 //Utilities
 @import './utilities/mixins';
 @import './utilities/variables';
+
+:root {
+        --mdc-filled-text-field-container-color: #000 !important; /* Cambia esto al color que desees */
+        --mdc-filled-text-field-input-text-color: white;
+}

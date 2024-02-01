@@ -15,4 +15,5 @@ import {MatIconModule} from '@angular/material/icon';
 export class CardAlbumComponent { 
   @Input({ required: true }) title!: string;
   @Input({ required: true }) year!: string;
+  @Input({ required: true }) img!: string;
 }

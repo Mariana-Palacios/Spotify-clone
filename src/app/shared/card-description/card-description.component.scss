@@ -1,9 +1,11 @@
+@import '../../styles//utilities/variables';
 .card{
-        width: 100%;
+        width: calc(100% - 317px - 32px);
         height: auto;
         background-color: transparent;
-        color: white !important;
-        background-color: red;
+        color: $white !important;
+        margin-left: 8px;
+        background: linear-gradient(to bottom, $spotify, $black); 
         &__side{
                 margin-left: 16px;
         }

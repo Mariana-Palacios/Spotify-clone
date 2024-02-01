@@ -11,6 +11,7 @@ import { mockDescription } from './__mocks__/mockDescription';
 import { mockTracks } from './__mocks__/mockTracks';
 import { mockAlbums } from './__mocks__/mockAlbums';
 import { SaveLocalStorageService } from '@services/saveLocalStorage.service';
+import { TimeMsPipe } from '../../pipe/timeMs.pipe';
 
 @Component({
   selector: 'app-artist',
@@ -19,7 +20,8 @@ import { SaveLocalStorageService } from '@services/saveLocalStorage.service';
     CommonModule,
     CardAlbumComponent,
     CardDescriptionComponent,
-    MatIconModule
+    MatIconModule,
+    TimeMsPipe
   ],
   templateUrl: './artist.component.html',
   styleUrl: './artist.component.css',
@@ -46,6 +48,10 @@ export default class ArtistComponent {
       }
     )
   }
+
+  selectionImg(img:string){
+    return img?img:'assets/spotify_logo.png'
+  }
   
   toggleDescription(type:string,description:any){
     console.log('Toggle description')
@@ -54,7 +60,7 @@ export default class ArtistComponent {
       case 'Album': 
         const album:Description = {
           logo: {
-            url: description.images[0].url ? description.images[0].url : 'assets/spotify_logo.png'
+            url: this.selectionImg(description.images[0].url)
           },
           type: type,
           title: description.name,
@@ -70,7 +76,7 @@ export default class ArtistComponent {
       case 'Tracks':
         const tracks:Description = {
           logo: {
-            url: description.album.images[0].url ? description.album.images[0].url : 'assets/spotify_logo.png'
+            url: this.selectionImg(description.album.images[0].url)
           },
           type: 'Song',
           title: description.name,

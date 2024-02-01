@@ -1,9 +1,10 @@
 .card {
-  width: 100%;
+  width: calc(100% - 317px - 32px);
   height: auto;
   background-color: transparent;
-  color: white !important;
-  background-color: red;
+  color: #fff !important;
+  margin-left: 8px;
+  background: linear-gradient(to bottom, #1ed760, #000);
 }
 .card__side {
   margin-left: 16px;

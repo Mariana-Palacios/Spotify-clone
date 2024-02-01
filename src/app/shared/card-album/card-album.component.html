@@ -1,10 +1,10 @@
 <mat-card class="card">
-    <img  class="card__img" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img  class="card__img" [src]="img" alt="Photo of a Shiba Inu">
     <!--<mat-icon aria-hidden="false" aria-label="play_circle" fontIcon="play_circle"></mat-icon>
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>-->
 
-    <mat-card-header>
-        <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-header class="card__description">
+        <mat-card-title class="card__title">{{ title }}</mat-card-title>
         <mat-card-subtitle>{{ year }} • Album</mat-card-subtitle>
     </mat-card-header>
 </mat-card>

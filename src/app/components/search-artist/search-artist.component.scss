@@ -1,0 +1,13 @@
+@import '../../../app/styles/utilities/variables';
+      
+table,.mat-mdc-paginator, .mdc-text-field--filled{
+        background-color: transparent !important;
+}
+
+table{
+        width: 100%;
+}
+
+th{
+        border-bottom: 1px solid $gray !important;
+}

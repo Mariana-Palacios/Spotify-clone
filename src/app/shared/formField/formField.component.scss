@@ -3,3 +3,12 @@
         flex-direction: column;
         overflow-y: auto;
 }
+
+input:focus, input{
+        color: white;
+        background-color: red;
+}
+
+.mdc-text-field--filled {
+        background-color: transparent !important;
+}

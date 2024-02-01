@@ -1,22 +1,22 @@
 <aside class="slidebar">
         <div class="slidebar__option-short">
-                <button>
+                <button class="btn-left">
                         <mat-icon aria-hidden="false" aria-label="home" fontIcon="home"></mat-icon>
                         Home
                 </button>
-                <button (click)="changePath('')">
+                <button (click)="changePath('')" class="btn-left">
                         <mat-icon aria-hidden="false" aria-label="search" fontIcon="search"></mat-icon>
                         Search
                 </button>
         </div>
         <div class="slidebar__option-long">
                 <div class="slidebar__library">
-                        <span>
+                        <span class="btn-center">
                                 <mat-icon aria-hidden="false" aria-label="library_music" fontIcon="library_music"></mat-icon>
                                 Your Library
                         </span>
-                        <button (click)="changePath('add')">
-                                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon> add
+                        <button (click)="changePath('add')" class="btn-center">
+                                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon> Add NEW
                         </button>
                 </div>
                 <div>
@@ -26,8 +26,10 @@
                                 }
                         }
                         @else{
-                                Empty
-                                <mat-icon aria-hidden="false" aria-label="hide_source" fontIcon="hide_source"></mat-icon>
+                                <div class="btn-center">
+                                        <span>Empty</span>
+                                        <mat-icon aria-hidden="false" aria-label="hide_source" fontIcon="hide_source"></mat-icon>  
+                                </div>
                         }
                 </div>
         </div>

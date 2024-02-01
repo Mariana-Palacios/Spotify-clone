@@ -10,7 +10,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: blue;
+  color: #fff;
+  overflow-x: hidden;
 }
 
 html {
@@ -43,6 +44,18 @@ button:hover {
   color: #fff;
 }
 
+.btn-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 @media screen and (max-width: 600px) {
   html {
     font-size: 14px;
@@ -71,4 +84,8 @@ button:hover {
   100% {
     color: #fff; /* Color final */
   }
+}
+:root {
+  --mdc-filled-text-field-container-color: #000 !important; /* Cambia esto al color que desees */
+  --mdc-filled-text-field-input-text-color: white;
 }/*# sourceMappingURL=styles.css.map */

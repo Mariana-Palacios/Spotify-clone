@@ -5,8 +5,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    //color: white;
-    color: blue;
+    color: $white;
+    overflow-x: hidden;
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 }
 
 main, html{
-    background-color: #000;
+    background-color: $black;
 }
 
 button{
@@ -28,12 +28,24 @@ button{
     font: inherit;
     text-align: left;
     text-decoration: none;
-    color: #B3B3B3;
+    color: $gray;
 }
 button:hover{
     cursor: pointer;
     animation: cambioColor 0.25s linear;
-    color: #fff;
+    color: $white;
+}
+
+.btn-center{
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.btn-left{
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
 }
 
 @media screen and (max-width: 600px) {
